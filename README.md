@@ -12,7 +12,7 @@ npm install
 ##### This API requires two RS512 public / private key pairs to facilitate JWT Auth.
 #### 1. Create a RS512 public / private key pair on a linux / mac environment:
 ```
-mkdir keys
+mkdir keys && cd keys
 ssh-keygen -t rsa -b 4096 -m PEM -f [NAME].key
 # Don't add passphrase
 open rsa -n [NAME].key -pubout -outform PEM -out [NAME].key.pub
