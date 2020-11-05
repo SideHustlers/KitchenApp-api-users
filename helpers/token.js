@@ -5,26 +5,23 @@ const accessTokenPrivateKey = fs.readFileSync('keys/jwtRS512.key');
 const refreshTokenPrivateKey = fs.readFileSync('keys/jwtRS512_refresh.key');
 
 module.exports = {
-  createTokens: function(user, roles) {
+  createTokens: function(user) {
     var payload = {
-      id: 123,
+      user_id: user.user_id,
       "https://hasura.io/jwt/claims": {
-        "x-hasura-default-role": "0",
+        "x-hasura-default-role": "" + user.role,
         "x-hasura-allowed-roles": [
           "0",
-          "100",
-          "200",
-          "300",
-          "400"
+          "100"
         ],
-        "x-hasura-user-id": "auth0|5db9de27b3065c0c6c4d890b"
+        "x-hasura-user-id": user.user_id
       },
       iat: Math.floor(Date.now() / 1000) - 30,
       exp: Math.floor(Date.now() / 1000) + (60 * 60) // Expire 1 hour from now
     }
 
     var refreshPayload = {
-      id: 123,
+      user_id: user.user_id,
       iat: Math.floor(Date.now() / 1000) - 30,
       exp: Math.floor(Date.now() / 1000) + (730 * (60 * 60)) // Expire one month from now
     };

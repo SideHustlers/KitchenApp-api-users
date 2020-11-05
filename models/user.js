@@ -27,15 +27,34 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATEONLY,
       allowNull: true
     },
+    role: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     restrictions: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       required: false
+    },
+    is_active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
+    is_verified: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   }, {
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   });
+
+  User.associate = function(models) {
+    User.hasMany(models.Contact, { foreignKey: 'user_id', sourceKey: 'user_id'});
+    User.hasMany(models.Address, { foreignKey: 'user_id', sourceKey: 'user_id'});
+  }
 
   return User;
 }

@@ -4,7 +4,7 @@
 
 ## Installation:
 ```
-git clone git@gitlab.com:gophr/expressjstemplate.git
+git clone git@github.com:SideHustlers/KitchenApp-api-users.git
 cd api-users
 npm install
 ```
@@ -12,7 +12,7 @@ npm install
 ##### This API requires two RS512 public / private key pairs to facilitate JWT Auth.
 #### 1. Create a RS512 public / private key pair on a linux / mac environment:
 ```
-cd keys
+mkdir keys
 ssh-keygen -t rsa -b 4096 -m PEM -f [NAME].key
 # Don't add passphrase
 open rsa -n [NAME].key -pubout -outform PEM -out [NAME].key.pub
@@ -57,7 +57,7 @@ npm run local
 
 ---
 ## Configurations :wrench:
-#### All database configurations are located in `config/config.json`file
+#### All database configurations are located in `config`folder
 - Local Development Configuration => `local`
 - Local Testing Configuration => `local_test`
 - Gitlab CI Testing Configuration => `test`

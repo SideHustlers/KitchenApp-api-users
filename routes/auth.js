@@ -27,6 +27,7 @@ router.post('/register',
         email: req.body.email,
         password: hashedPassword,
         dob: req.body.dob,
+        role: 100,
       });
       return responses.returnSuccessResponse(req, res, true, user);
     } catch (err) {
@@ -48,7 +49,7 @@ router.post('/login',
       if (user) {
         var isPasswordValid = await passwordHelper.verifyHashPassword(req.body.password, user.password);
         if (isPasswordValid) {
-          var [accessToken, refreshToken] = tokenHelper.createTokens(null, null);
+          var [accessToken, refreshToken] = tokenHelper.createTokens(user);
           return responses.returnSuccessResponse(req, res, true, {user: user, access_token: accessToken, refresh_token: refreshToken});
         } else {
           return responses.returnForbiddenResponse(req, res, "Invalid login credentials");

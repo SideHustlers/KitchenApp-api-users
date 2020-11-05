@@ -31,6 +31,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      role: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       dob: {
         allowNull: true,
         type: Sequelize.DATEONLY
@@ -38,6 +42,16 @@ module.exports = {
       restrictions:{
         allowNull: true,
         type: Sequelize.ARRAY(Sequelize.STRING)
+      },
+      is_active: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
+      is_verified: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
       },
       created_at: {
         allowNull: false,
@@ -47,7 +61,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    })
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
