@@ -1,9 +1,8 @@
 require('dotenv').config();
 const path = require('path');
-config = require('config');
 
 module.exports = {
-  'config': './config/'+process.env.NODE_ENV+'.js',
+  'config': './config/config.js',
   'models-path': path.resolve('models'),
   'seeders-path': path.resolve('seeders'),
   'migrations-path': path.resolve('migrations'),
