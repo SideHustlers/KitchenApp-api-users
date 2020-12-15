@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "local": "cp ./envs/env_local ./.env && NODE_ENV=local nodemon server.js",
+    "local": "cp ./envs/env_local ./.env && NODE_ENV=local nodemon index.js",
     "local_migrations": "cp ./envs/env_local ./.env && NODE_ENV=local node_modules/.bin/sequelize db:migrate",
-    "dev": "cp ./envs/env_dev ./.env && NODE_ENV=development nodemon server.js",
+    "dev": "cp ./envs/env_dev ./.env && NODE_ENV=development nodemon index.js",
     "dev_migrations": "cp ./envs/env_dev ./.env && NODE_ENV=development node_modules/.bin/sequelize db:migrate",
-    "prod": "cp ./envs/env_prod ./.env && NODE_ENV=production nodemon server.js",
+    "prod": "cp ./envs/env_prod ./.env && NODE_ENV=production nodemon index.js",
     "prod_migrations": "cp ./envs/env_prod ./.env && NODE_ENV=development node_modules/.bin/sequelize db:migrate"
   },
   "author": "Pramod Gobburi",
@@ -29,6 +29,7 @@
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.6",
     "pg": "^8.4.2",
+    "randomstring": "^1.1.5",
     "sequelize": "^6.3.5",
     "uuid": "^8.3.1"
   },
